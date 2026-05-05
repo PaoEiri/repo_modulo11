@@ -1,0 +1,16 @@
+name: Tests
+on: # Trigger the workflow on push or pull request events 
+  push:
+    branches: ["*"] #* es en cualquier rama, si quieres solo en main, pon main
+  pull_request:
+    branches: ["*"]  
+
+jobs: #los test se ejecutan en paralelo, si quieres que se ejecuten en orden, pon dependencias entre ellos
+  this_job_run_the_tests:
+    runs-on: ubuntu-latest #cuqlquier identificador a una imagen 
+    steps:
+      - uses: actions/checkout@v3 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
+        uses: astral-sh/setup-uv@v5 # para setear uv
+      - name: Install uv # 
+        run: echo "hola mundo"
+        run: ls -la
