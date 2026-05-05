@@ -13,12 +13,12 @@ jobs:
       - uses: actions/checkout@v4 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
       - run: |
           python -c "
-          code = open('src/main.py').read()"
-          html=open('templates/index.html').read().replace("{{code}}", code)
+          code = open('src.py').read()"
+          html=open('templates.html').read().replace("{{code}}", code)
           open('public/index.html', 'w').write(html)
           "
       - uses: actions/configure-pages@v5 # para deployar a github pages
       - uses: actions/upload-pages-artifact@v3 # para subir los archivos a github pages
-        with:
+        with:º
           path: public # la carpeta que se va a subir a github pages, en este caso es la carpeta public, pero puede ser cualquier carpeta que quieras subir
       - uses: actions/deploy-pages@v3 # para deployar a github pages
