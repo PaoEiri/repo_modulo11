@@ -7,10 +7,15 @@ on: # Trigger the workflow on push or pull request events
 
 jobs: #los test se ejecutan en paralelo, si quieres que se ejecuten en orden, pon dependencias entre ellos
   this_job_run_the_tests:
-    runs-on: ubuntu-latest #cuqlquier identificador a una imagen 
+  
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest] #para correr los test en diferentes sistemas operativos
+        python-version: [3.10, 3.11, 3.12] #para correr los test en diferentes versiones de python
+    runs-on: ${{ matrix.os }} #para correr el test en el sistema operativo definido en la matriz
     steps:
       - uses: actions/checkout@v3 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
       - uses: astral-sh/setup-uv@v5 # para setear uv
         name: Install uv # 
       - run: echo "hola mundo"
-      - run: uvx pytest test_code.py 
+      - run: uvx --python ${{ matrix.python-version }} pytest test_code.py 
