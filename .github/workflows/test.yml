@@ -13,4 +13,4 @@ jobs: #los test se ejecutan en paralelo, si quieres que se ejecuten en orden, po
       - uses: astral-sh/setup-uv@v5 # para setear uv
         name: Install uv # 
       - run: echo "hola mundo"
-      - run: uvx pyttest test_code.py 
+      - run: uvx pytest test_code.py 
