@@ -10,7 +10,7 @@ jobs: #los test se ejecutan en paralelo, si quieres que se ejecuten en orden, po
     runs-on: ubuntu-latest #cuqlquier identificador a una imagen 
     steps:
       - uses: actions/checkout@v3 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
-        uses: astral-sh/setup-uv@v5 # para setear uv
-      - name: Install uv # 
-        run: echo "hola mundo"
-        run: ls -la
+      - uses: astral-sh/setup-uv@v5 # para setear uv
+        name: Install uv # 
+      - run: echo "hola mundo"
+      - run: ls -la
