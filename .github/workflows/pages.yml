@@ -10,7 +10,7 @@ jobs:
   deploy: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
+      - uses: actions/checkout@v3 # action son parte de una pipeline, checkout es una acción que permite clonar el repositorio en el runner
       - run: |
           python -c "
           code = open('src.py').read()"
